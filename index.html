@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion des Chambres</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<!-- jsPDF et AutoTable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<!-- Login Overlay -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <h2>Connexion Admin</h2>
+    <input type="password" id="adminPassword" placeholder="Mot de passe">
+    <button id="btnLogin">🔒 Se connecter</button>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container" id="mainContent" style="display:none;">
+    <h1>Gestion des Chambres</h1>
+
+    <!-- Formulaire de saisie -->
+    <div class="admin-panel">
+        <label>Nom de la chambre / numéro :</label>
+        <input type="text" id="nomChambre">
+        <label>Nombre de personnes présentes :</label>
+        <input type="number" id="presentes">
+        <label>Nombre de personnes hébergées :</label>
+        <input type="number" id="hebergees">
+        <label>Nombre de lits non occupés :</label>
+        <input type="number" id="litsNonOccupes">
+        <label>Nombre de matelas déjà présents :</label>
+        <input type="number" id="matelas">
+        <button type="button" onclick="ajouterChambre()">➕ Ajouter/Modifier Chambre</button>
+    </div>
+
+    <!-- Formules et actions -->
+    <div class="admin-panel">
+        <label>Nombre max lits Garçons :</label>
+        <input type="number" id="maxGarcons" value="10">
+        <label>Nombre max lits Filles :</label>
+        <input type="number" id="maxFilles" value="8">
+        <button type="button" id="calculer">🔧 Recalculer toutes les lignes</button>
+        <button type="button" id="exportPDF">📄 Exporter en PDF</button>
+    </div>
+
+    <!-- Tableau -->
+    <table id="tableChambres">
+        <thead>
+            <tr>
+                <th>Nom de la chambre</th>
+                <th>Personnes présentes</th>
+                <th>Personnes hébergées</th>
+                <th>Lits non occupés</th>
+                <th>Matelas déjà présents</th>
+                <th>Lits à ajouter</th>
+                <th>Capacité max</th>
+                <th>Sexe</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
